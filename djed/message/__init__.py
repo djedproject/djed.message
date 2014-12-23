@@ -53,4 +53,3 @@ def includeme(config):
 
 
     config.add_template_filter('message:error', error_message)
-    config.scan('djed.message')
