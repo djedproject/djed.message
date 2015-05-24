@@ -14,7 +14,7 @@ install_requires = [
     'pyramid_chameleon',
 ]
 
-tests_require = install_requires + [
+tests_require = [
     'nose',
     'webtest',
 ]
@@ -22,9 +22,9 @@ tests_require = install_requires + [
 
 setup(
     name='djed.message',
-    version='0.0',
+    version='0.1.dev0',
     description='djed.message',
-    long_description=README + '\n\n' + CHANGES,
+    long_description='\n\n'.join([README, CHANGES]),
     classifiers=[
         "Framework :: Pyramid",
         "Intended Audience :: Developers",
@@ -42,6 +42,8 @@ setup(
     packages=['djed.message'],
     include_package_data=True,
     install_requires=install_requires,
-    tests_require=tests_require,
+    extras_require={
+        'testing': tests_require,
+    },
     test_suite='nose.collector',
 )
