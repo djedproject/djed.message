@@ -1,5 +1,5 @@
 from pyramid.compat import escape, string_types
-from djed.templates import render, template_filter
+from djed.renderer import render, template_filter
 
 
 def add_message(request, msg, type='info'):
@@ -44,7 +44,7 @@ def error_message(context, request):
 
 def includeme(config):
     config.include('pyramid_chameleon')
-    config.include('djed.templates')
+    config.include('djed.renderer')
 
     config.add_layer('message', path='djed.message:templates/')
 

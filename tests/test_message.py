@@ -81,7 +81,7 @@ class TestStatusMessages(BaseTestCase):
         self.assertEqual(msg, '')
 
     def test_messages_unknown_type(self):
-        from djed.templates import RendererNotFound
+        from djed.renderer import RendererNotFound
 
         self.assertRaises(
             RendererNotFound,
