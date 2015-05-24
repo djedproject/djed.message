@@ -1,6 +1,6 @@
 from pyramid.compat import text_
 
-from base import BaseTestCase
+from .base import BaseTestCase
 from djed.message import add_message
 from djed.message import render_messages
 
@@ -43,7 +43,7 @@ class TestStatusMessages(BaseTestCase):
 
     def test_messages_custom_msg(self):
         self.config.add_layer(
-            'message', 'test', path='djed.message:tests/message/')
+            'message', 'test', path='tests:message/')
 
         add_message(self.request, 'message', 'custom')
         self.assertEqual(
@@ -52,7 +52,7 @@ class TestStatusMessages(BaseTestCase):
 
     def test_messages_custom_msg_different_type(self):
         self.config.add_layer(
-            'test', path='djed.message:tests/message/')
+            'test', path='tests:message/')
 
         add_message(self.request, 'message', 'test:custom')
         self.assertEqual(
@@ -61,7 +61,7 @@ class TestStatusMessages(BaseTestCase):
 
     def test_messages_render_message_with_error(self):
         self.config.add_layer(
-            'message', 'test', path='djed.message:tests/messages/')
+            'message', 'test', path='tests:messages/')
 
         def customMessage(context, request):
             raise ValueError()
