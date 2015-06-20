@@ -1,11 +1,14 @@
 from pyramid.compat import text_
 
-from .base import BaseTestCase
+from djed.testing import BaseTestCase
+
 from djed.message import add_message
 from djed.message import render_messages
 
 
 class TestStatusMessages(BaseTestCase):
+
+    _includes = ('djed.message',)
 
     def test_messages_addmessage(self):
         add_message(self.request, 'message')
